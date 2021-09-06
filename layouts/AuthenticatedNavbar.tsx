@@ -15,7 +15,7 @@ import {
   PopoverCloseButton,
   PopoverContent,
   PopoverHeader,
-  PopoverTrigger
+  PopoverTrigger,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { getWalletConnection, logout } from "../utils/near/init";
@@ -24,8 +24,8 @@ const Logo = (props) => {
   return (
     <Box {...props}>
       <Link href="/">
-        <Text fontSize="lg" cursor="pointer" fontWeight="bold" color="black" >
-                    Job Unicorn
+        <Text cursor="pointer" fontWeight="bold" color="black">
+          Job Unicorn
         </Text>
       </Link>
     </Box>
@@ -34,8 +34,7 @@ const Logo = (props) => {
 
 export const UserPopover = ({ image, name }) => {
   return (
-
-    <Popover >
+    <Popover>
       <PopoverTrigger>
         <Avatar size="sm" src={image} />
       </PopoverTrigger>
@@ -43,7 +42,7 @@ export const UserPopover = ({ image, name }) => {
         <PopoverArrow />
         <PopoverCloseButton />
         <PopoverHeader>{name}</PopoverHeader>
-        <PopoverBody >
+        <PopoverBody>
           <MenuItem link="/talent">Post a Job</MenuItem>
           <Button
             size="md"
@@ -56,13 +55,11 @@ export const UserPopover = ({ image, name }) => {
           >
             <Text>Sign Out</Text>
           </Button>
-
         </PopoverBody>
       </PopoverContent>
     </Popover>
-
-  )
-}
+  );
+};
 
 const AuthenticatedNavBar = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -102,9 +99,9 @@ const MenuIcon = () => (
 
 const MenuToggle = ({ toggle, isOpen }) => {
   return (
-    <Box display={{ base: "block", md: "none" }} onClick={toggle} >
+    <Box display={{ base: "block", md: "none" }} onClick={toggle}>
       {isOpen ? <CloseIcon /> : <MenuIcon />}
-    </Box >
+    </Box>
   );
 };
 
@@ -112,8 +109,7 @@ const MenuItem = ({ children, link, ...rest }) => {
   return (
     <ChakraLink>
       <Link href={link}>
-        <Text bg="white"
-          color="black" display="block" {...rest}>
+        <Text bg="white" color="black" display="block" {...rest}>
           {children}
         </Text>
       </Link>
@@ -122,7 +118,6 @@ const MenuItem = ({ children, link, ...rest }) => {
 };
 
 const MenuLinks = ({ isOpen }) => {
-
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -137,17 +132,14 @@ const MenuLinks = ({ isOpen }) => {
         color="black"
         py={[4, 4, 0, 0]}
       >
-        
         <MenuItem link="/jobs"> Jobs </MenuItem>
-        
-        
+
         <>
-
-          <UserPopover image={"https://wallpapercave.com/uwp/uwp936802.jpeg"} name={getWalletConnection().getAccountId()} />
+          <UserPopover
+            image={"https://wallpapercave.com/uwp/uwp936802.jpeg"}
+            name={getWalletConnection().getAccountId()}
+          />
         </>
-     
-
-
       </Stack>
     </Box>
   );
@@ -167,8 +159,7 @@ const NavBarContainer = ({ children, ...props }) => {
     >
       <GridItem colSpan={[0, 1]} />
 
-
-      <GridItem colSpan={3} >
+      <GridItem colSpan={3}>
         <Flex
           p={4}
           wrap="wrap"
@@ -177,7 +168,6 @@ const NavBarContainer = ({ children, ...props }) => {
           bg="white"
           color="black"
           h={["7vh", "7vh"]}
-
           {...props}
         >
           {children}
